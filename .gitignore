@@ -1,6 +1,6 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-/.idea
-/__pycache__
-/TimeDB.csv
+.idea/
+__pycache__/
+venv/
+
+
+
