@@ -8,11 +8,11 @@ class MainWindow(QMainWindow, Time, MiniDB):
     def __init__(self):
         super().__init__()
 
-        self.clearDB()
+        self.clear_db()
 
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         self.setWindowTitle('Time Counter 3.0')
         self.setFixedSize(500, 500)
 
@@ -31,8 +31,8 @@ class MainWindow(QMainWindow, Time, MiniDB):
 
         push_btn1.clicked.connect(self.start_btn)
         push_btn2.clicked.connect(self.end_btn)
-        push_btn3.clicked.connect(self.show_sessions)
-        push_btn4.clicked.connect(self.show_total)
+        push_btn3.clicked.connect(self.show_sessions_btn)
+        push_btn4.clicked.connect(self.show_total_btn)
 
         self.show()
 
@@ -48,16 +48,16 @@ class MainWindow(QMainWindow, Time, MiniDB):
         msg.setText(Time.end(self))
         msg.exec()
 
-    def show_sessions(self):
+    def show_sessions_btn(self):
         msg = QMessageBox()
         msg.setWindowTitle(' ')
-        msg.setText(Time.show3lastSessions(self))
+        msg.setText(Time.show_3_last_sessions(self))
         msg.exec()
 
-    def show_total(self):
+    def show_total_btn(self):
         msg = QMessageBox()
         msg.setWindowTitle(' ')
-        msg.setText(Time.showTotalTime(self))
+        msg.setText(Time.show_total_time(self))
         msg.exec()
 
 

@@ -10,7 +10,7 @@ class Time(MiniDB):
         today = now.strftime('%d.%m.%Y')
         now_time = now.strftime('%H:%M')
 
-        if self.loadLastRow(1) == '===':
+        if self.load_last_row(1) == '===':
             self.save(today, now.hour, now.minute, blank, blank, blank, blank)
             return f'Start at: {now_time}.'
         else:
@@ -21,7 +21,7 @@ class Time(MiniDB):
         today = now.strftime('%d.%m.%Y')
         now_time = now.strftime('%H:%M')
 
-        if self.loadLastRow(1) != '===':
+        if self.load_last_row(1) != '===':
 
             s_h = int(self.load(1))
             s_m = int(self.load(2))
@@ -47,15 +47,15 @@ class Time(MiniDB):
         else:
             return f"You've already finished the session"
 
-    def showTotalTime(self):
+    def show_total_time(self):
         sum_hour = self.load(5)
         sum_min = self.load(6)
         return f'Time in total: {sum_hour}h, {sum_min}min'
 
-    def show3lastSessions(self):
-        list_h = self.loadSessions(3)
-        list_min = self.loadSessions(4)
-        list_date = self.loadSessions(0)
+    def show_3_last_sessions(self):
+        list_h = self.load_sessions(3)
+        list_min = self.load_sessions(4)
+        list_date = self.load_sessions(0)
 
         return f'Date is in form: (day.month.year).\n' \
                f' \n' \

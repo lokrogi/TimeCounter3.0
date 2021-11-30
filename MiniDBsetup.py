@@ -4,16 +4,16 @@ import csv
 class MiniDB:
     def save(self, date, s_hour, s_minute, session_h, session_m, sum_hour, sum_min):
         to_save = [date, s_hour, s_minute, session_h, session_m, sum_hour, sum_min]
-        with open('TimeDB.csv', 'a') as DBcsv:
-            db_reader = csv.writer(DBcsv, delimiter=';')
+        with open('TimeDB.csv', 'a') as db_csv:
+            db_reader = csv.writer(db_csv, delimiter=';')
             db_reader.writerow(to_save)
 
-        DBcsv.close()
+        db_csv.close()
 
     # Date=0  s_hour=1  s_minute=2  session_h=3  session_m=4  sum_hour=5  sum_min=6
     def load(self, col_index):
-        with open('TimeDB.csv') as DBcsv:
-            db_reader = csv.reader(DBcsv, delimiter=';')
+        with open('TimeDB.csv') as db_csv:
+            db_reader = csv.reader(db_csv, delimiter=';')
 
             rows = [row for row in db_reader]
 
@@ -23,17 +23,17 @@ class MiniDB:
             else:
                 return rows[x][col_index]
 
-    def loadLastRow(self, col_index):
-        with open('TimeDB.csv') as DBcsv:
-            db_reader = csv.reader(DBcsv, delimiter=';')
+    def load_last_row(self, col_index):
+        with open('TimeDB.csv') as db_csv:
+            db_reader = csv.reader(db_csv, delimiter=';')
 
             rows = [row for row in db_reader]
 
             return rows[-2][col_index]
 
-    def loadSessions(self, col_index):
-        with open('TimeDB.csv') as DBcsv:
-            db_reader = csv.reader(DBcsv, delimiter=';')
+    def load_sessions(self, col_index):
+        with open('TimeDB.csv') as db_csv:
+            db_reader = csv.reader(db_csv, delimiter=';')
 
             rows = [row for row in db_reader]
 
@@ -47,9 +47,9 @@ class MiniDB:
                     x -= 2
             return sessions
 
-    def clearDB(self):
-        with open('TimeDB.csv') as DBcsv:
-            db_reader = csv.reader(DBcsv, delimiter=';')
+    def clear_db(self):
+        with open('TimeDB.csv') as db_csv:
+            db_reader = csv.reader(db_csv, delimiter=';')
 
             rows = [row for row in db_reader]
 
@@ -69,9 +69,9 @@ class MiniDB:
                     rows.pop(0)
                     z += 1
                 # saving
-                with open('TimeDB.csv', 'w') as dbFile:
-                    db_clear = csv.writer(dbFile, delimiter=';')
+                with open('TimeDB.csv', 'w') as db_file:
+                    db_clear = csv.writer(db_file, delimiter=';')
                     for x in rows:
                         db_clear.writerow(x)
 
-        DBcsv.close()
+        db_csv.close()
